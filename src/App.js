@@ -30,8 +30,8 @@ class App extends Component {
         return (
             <div className="App">
                 <header className='header'>
-                    { this.state.isPlaying ? <h1>ALL BLACKS</h1> : <h1>Congrats! Haka!</h1> }
-                    <button onClick={ this.startGame }>Start</button>
+                    { this.state.isPlaying ? <h1 className="text-grey-darkest">ALL BLACKS</h1> : <h1 className="text-red-light">Congrats! Haka!</h1> }
+                    <button onClick={ this.startGame } className="p-16 mt-4 bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">Start</button>
                 </header>
                 <PanelList endGame={ this.endGame } isPlaying={ this.state.isPlaying } />
             </div>
