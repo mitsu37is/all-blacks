@@ -1,7 +1,7 @@
 import React from 'react';
 import Panel from '../Panel/Panel';
 
-class PanelList extends React.Component {
+class PanelList9 extends React.Component {
     constructor(props) {
         super(props);
 
@@ -96,4 +96,4 @@ class PanelList extends React.Component {
     }
 }
 
-export default PanelList;
+export default PanelList9;
