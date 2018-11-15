@@ -34,6 +34,30 @@ class PanelList extends React.Component {
     handleClick(i) {
         if (this.props.isPlaying) {
             const panelColors = this.state.panelColors.slice();
+            switch (i % 3) {
+                case 0:
+                panelColors[i+1] = !panelColors[i+1];
+                break;
+                case 1:
+                    panelColors[i-1] = !panelColors[i-1];
+                    panelColors[i+1] = !panelColors[i+1];
+                    break;
+                default:
+                    panelColors[i-1] = !panelColors[i-1];
+                    break;
+            }
+            switch (Math.floor(i / 3)) {
+                case 0:
+                    panelColors[i+3] = !panelColors[i+3];
+                    break;
+                case 1:
+                    panelColors[i-3] = !panelColors[i-3];
+                    panelColors[i+3] = !panelColors[i+3];
+                    break;
+                default:
+                    panelColors[i-3] = !panelColors[i-3];
+                    break;
+            }
             panelColors[i] = !panelColors[i];
             this.setState({
                 panelColors: panelColors
