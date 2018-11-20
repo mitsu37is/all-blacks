@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactPlayer from 'react-player';
 import PanelList9 from './components/PanelList/PanelList9';
 import PanelList16 from './components/PanelList/PanelList16';
 import PanelList25 from './components/PanelList/PanelList25';
@@ -29,7 +30,6 @@ class App extends Component {
         let cleared = this.state.cleared + 1;
         this.setState({
             isPlaying: false,
-            panelNumber: 0,
             cleared: cleared
         });
     }
@@ -45,7 +45,11 @@ class App extends Component {
                         <button onClick={ () => { this.startGame(5) } } className="p-16 mt-4 m-2 bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">5x5 Start</button>
                     </div>
                 </header>
-                { this.state.panelNumber === 0 && <span>マス目の数を選んで始めよう！<br />あなたは { this.state.cleared } 回クリアしました！</span> }
+                <span>あなたは { this.state.cleared } 回クリアしました！</span><br /><br />
+                {
+                    this.state.cleared >= 1 &&
+                    <ReactPlayer url='https://www.dropbox.com/s/ipteldxe2hezn6x/message.m4a?dl=0' playing controls={true} width={'90%'} height={'4rem'} style={{margin: '0 auto 1rem'}} />
+                }
                 { this.state.panelNumber === 3 && <PanelList9  endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
                 { this.state.panelNumber === 4 && <PanelList16 endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
                 { this.state.panelNumber === 5 && <PanelList25 endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
