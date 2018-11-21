@@ -48,7 +48,7 @@ class App extends Component {
                 <span>あなたは { this.state.cleared } 回クリアしました！</span><br /><br />
                 {
                     this.state.cleared >= 1 &&
-                    <ReactPlayer url='https://www.dropbox.com/s/ipteldxe2hezn6x/message.m4a?dl=0' playing controls={true} width={'90%'} height={'4rem'} style={{margin: '0 auto 1rem'}} />
+                    <ReactPlayer url='https://www.dropbox.com/s/1iv04rk4j9tc4f4/message2.m4a?dl=0' playing controls={true} width={'90%'} height={'4rem'} style={{margin: '0 auto 1rem'}} />
                 }
                 { this.state.panelNumber === 3 && <PanelList9  endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
                 { this.state.panelNumber === 4 && <PanelList16 endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
