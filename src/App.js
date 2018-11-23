@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player';
 import PanelList9 from './components/PanelList/PanelList9';
 import PanelList16 from './components/PanelList/PanelList16';
 import PanelList25 from './components/PanelList/PanelList25';
@@ -34,6 +33,14 @@ class App extends Component {
         });
     }
 
+    generateTweetLink(countCleared) {
+        const text = encodeURIComponent(`あなたは ALL BLACKS を ${countCleared} 回クリアしました！`);
+        const url = encodeURIComponent('https://elastic-keller-d5f34e.netlify.com/');
+        const hashtags = encodeURIComponent('React,JavaScript');
+        const acount = encodeURIComponent('edihasam068');
+        return `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}&via=${acount}`;
+    }
+
     render() {
         return (
             <div className="App">
@@ -45,11 +52,7 @@ class App extends Component {
                         <button onClick={ () => { this.startGame(5) } } className="p-16 mt-4 m-2 bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">5x5 Start</button>
                     </div>
                 </header>
-                <span>あなたは { this.state.cleared } 回クリアしました！</span><br /><br />
-                {
-                    this.state.cleared >= 1 &&
-                    <ReactPlayer url='https://www.dropbox.com/s/1iv04rk4j9tc4f4/message2.m4a?dl=0' playing controls={true} width={'90%'} height={'4rem'} style={{margin: '0 auto 1rem'}} />
-                }
+                { this.state.cleared >= 1 && <span>あなたは { this.state.cleared } 回クリアしました！<a href={this.generateTweetLink(this.state.cleared)} target='_blank' rel='noopener noreferrer'><button className="p-16 mt-4 m-2 bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded">Tweet</button></a></span> }<br /><br />
                 { this.state.panelNumber === 3 && <PanelList9  endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
                 { this.state.panelNumber === 4 && <PanelList16 endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
                 { this.state.panelNumber === 5 && <PanelList25 endGame={ this.endGame } isPlaying={ this.state.isPlaying } /> }
